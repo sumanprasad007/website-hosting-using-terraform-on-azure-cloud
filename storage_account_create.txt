@@ -1,0 +1,27 @@
+# command to create resouces group using az cli
+az group create --name tf-state-rg --location eastus
+
+# command to create storage account using az cli
+az storage account create --name tfstatesumanprasad --location eastus --resource-group jenkins_group
+
+
+
+# command to output the account key
+$ACCOUNT_KEY=$( az storage account key list --resource_group jenkins_group  --accountname tfstatesumanprasad --query '[0].value' -o tsv)
+
+# storage container creation
+
+az storage container create --accountname tfstatesumanprasad tfstate --public-access off --account-key <account-key>
+
+
+
+
+
+
+
+
+
+
+
+
+
